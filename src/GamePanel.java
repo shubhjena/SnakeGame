@@ -15,7 +15,7 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean running = false;
     Timer timer;
     Random random;
-
+    ImageIcon background = new ImageIcon("D:\\Programming Bootcamp\\IdeaProjects\\SnakeGame\\src\\background.png");
     GamePanel(){
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -36,7 +36,9 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void draw (Graphics g){
+        g.drawImage(background.getImage(),0,0,null);
         if (running) {
+//            g.setColor(Color.darkGray);
             for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
                 g.drawLine(i*UNIT_SIZE,0,i*UNIT_SIZE,SCREEN_HEIGHT);
             }
@@ -44,17 +46,17 @@ public class GamePanel extends JPanel implements ActionListener {
                 g.drawLine(0,i*UNIT_SIZE,SCREEN_WIDTH,i*UNIT_SIZE);
             }
             g.setColor(Color.RED);
-            g.fillOval(appleX,appleY,UNIT_SIZE,UNIT_SIZE);
+            g.fillRect(appleX,appleY,UNIT_SIZE,UNIT_SIZE);
             for (int i = 0; i < bodyParts; i++) {
                 if (i==0){
                     g.setColor(Color.GREEN);
-                    g.fillRect(x[i],y[i],UNIT_SIZE,UNIT_SIZE);
+                    g.fillOval(x[i],y[i],UNIT_SIZE,UNIT_SIZE);
                 }
                 else {
                     g.setColor(new Color(45, 180, 0));
                     //colourful snake
                     g.setColor(new Color(random.nextInt(255), random.nextInt(255),random.nextInt(255)));
-                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                    g.fillOval(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
             g.setColor(Color.YELLOW);
