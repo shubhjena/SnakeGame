@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements ActionListener {
     Timer timer;
     Random random;
     ImageIcon background = new ImageIcon("D:\\Programming Bootcamp\\IdeaProjects\\SnakeGame\\src\\background.png");
+    ImageIcon apple = new ImageIcon("D:\\Programming Bootcamp\\IdeaProjects\\SnakeGame\\src\\apple.png");
     GamePanel(){
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
@@ -46,7 +47,8 @@ public class GamePanel extends JPanel implements ActionListener {
                 g.drawLine(0,i*UNIT_SIZE,SCREEN_WIDTH,i*UNIT_SIZE);
             }
             g.setColor(Color.RED);
-            g.fillRect(appleX,appleY,UNIT_SIZE,UNIT_SIZE);
+//            g.fillRect(appleX,appleY,UNIT_SIZE,UNIT_SIZE);
+            g.drawImage(apple.getImage(),appleX,appleY,null);
             for (int i = 0; i < bodyParts; i++) {
                 if (i==0){
                     g.setColor(Color.GREEN);
